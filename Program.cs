@@ -10,7 +10,7 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader()
                 .AllowAnyMethod()
-                .WithOrigins("http://localhost:3000")
+                .WithOrigins("http://localhost:3000","http://localhost:5000")
                 .AllowCredentials();
         });
     });
@@ -32,5 +32,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapHub<ChatHub>("/chatHub");
+// app.MapHub<SignalMessage>("/signalHub");
 
 app.Run();
