@@ -1,9 +1,6 @@
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-// var connection = new signalR.HubConnectionBuilder()
-//   .withUrl("/signalHub")
-//   .build();
 
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
@@ -16,12 +13,6 @@ connection.on("ReceiveMessage", function (user, message) {
   // should be aware of possible script injection concerns.
   li.textContent = `${user} send: ${message}`;
 });
-
-// connection.on("ReceiveMessage", function (req) {
-//   var li = document.createElement("li");
-//   document.getElementById("messagesList").appendChild(li);
-//   li.textContent = `${req.Code} send: ${req.Name}`;
-// });
 
 connection
   .start()
